@@ -2,7 +2,7 @@
 
 ### David Ramos from Tampere, Finland
 
-<img src="sentiment_analysis_flask/static/screenshot.png" height="400">
+<img src="playlist_sentiment_analysis/static/screenshot.png" height="400">
 
 #### Video Demo: 
 
