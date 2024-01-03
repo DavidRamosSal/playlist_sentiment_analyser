@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Loading
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function navigate() {
+        window.location.href = 'analysis';  // Redirects user to the /analysis route when 'analysis' is finished
+    }
+    fetch('analyse').then(navigate); // Performing 'analyse' and then calls navigate() function, declared above
+</script>
+{% endblock scripts %}
+
+
+{% block main %}
+<div class="mnh-500 mnw-500 mnh-350-sm mnw-350-sm radius-lg relative zi-3 text-box d-flex justify-content-center vh-100"
+    id="loaders">
+    <div class="loader">
+        <div class="loading"></div>
+    </div>
+</div>
+{% endblock %}

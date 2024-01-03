@@ -1,0 +1,15 @@
+.env
+.venv/
+
+.cache
+__pycache__/
+*_session/
+*.py[cod]
+*$py.class
+
+.ipynb_checkpoints
+
+!instance/.gitignore
+.webassets-cache
+
+.python-version

@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "playlist_sentiment_analyser"
+version = "0.1.0"
+description = ""
+authors = ["Dave <davidramossal@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+spotipy = "^2.23.0"
+lyricsgenius = "^3.0.1"
+python-dotenv = "^1.0.0"
+nltk = "^3.8.1"
+spacy = "3.7.2"
+fasttext = {git = "https://github.com/facebookresearch/fastText"}
+asent = "^0.8.3"
+pyprof2calltree = "^1.4.5"
+wordcloud = "^1.9.3"
+pandas = "^2.1.4"
+flask = "^3.0.0"
+flask-session = "^0.5.0"
+requests = "^2.31.0"
+plotly = "^5.18.0"
+[tool.poetry.dependencies.en_core_web_sm]
+url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

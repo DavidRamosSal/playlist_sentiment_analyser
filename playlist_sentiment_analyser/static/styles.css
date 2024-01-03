@@ -1,0 +1,70 @@
+/* Size for brand */
+nav .navbar-brand {
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav .navbar-brand .white {
+    color: #ffff;
+}
+
+nav .navbar-brand .red {
+    color: #ea433b;
+}
+
+nav .navbar-brand .yellow {
+    color: #f5b82e;
+}
+
+nav .navbar-brand .green {
+    color: #1A8754;
+}
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -56px 0 0 -56px;
+}
+
+html body {
+    background-color: #F8F9FA;
+}
+
+.navbar {
+    border: none !important;
+}
+
+
+.underline-text {
+    text-decoration: underline;
+}
+
+.about-section {
+    max-width: 700px;
+    /* Set your desired max width */
+    margin: auto;
+    text-align: left;
+    padding: 20px;
+}
+
+.loader:after {
+    content: " ";
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 1px solid;
+    border-color: #0aa13a transparent #47a90e transparent;
+    animation: ring 1.2s linear infinite;
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,115 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Sentiment Analysis for: {{ playlist_name }}
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock scripts %}
+
+{% block main %}
+<h1 style="margin-bottom: 30px" class="text-left text-success">Sentiment Analysis for: <b>{{ playlist_name }}</b></h1>
+
+<div class="container-fluid">
+    <!-- First Row -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Songs Analyzed</h5>
+                    <p class="card-text text-success">{{ songs_analysed }}/{{ songs_total }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Average Lyrics Sentiment</h5>
+                    <p class="card-text text-success">{{ avg_sentiment }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Average <a class="link-secondary"
+                            href="/about#musical_valence">Musical Valence</a></h5>
+                    <p class="card-text text-success">{{ avg_valence | two_decimal_places}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Predominant Genre</h5>
+                    <p class="card-text text-success">{{ predominant_genre }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Second Row -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary"><a class="link-secondary"
+                            href="/about#sentiment_score">Sentiment Scores</a></h5>
+                    <!-- Placeholder for image -->
+                    {{ plot_sentiment_pie_chart | safe }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Wordcloud</h5>
+                    <!-- Placeholder for image -->
+                    <div class="text-center">
+                        <img class="img-fluid" src=" {{ url_for('fullwordcloud') }}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Third Row -->
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary">Genres breakdown</h5>
+                    <!-- Placeholder for image -->
+                    {{ plot_genres_breakdown | safe }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary"><a class="link-secondary" href="/about#audio_features">Audio
+                            Features</a></h5>
+                    <!-- Placeholder for image -->
+                    {{ plot_audio_features | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fourth Row -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title text-secondary"><a class="link-secondary"
+                            href="/about#lexical_diversity">Lexical Diversity</a></h5>
+                    <!-- Placeholder for image -->
+                    {{ plot_lexical_diversity | safe }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

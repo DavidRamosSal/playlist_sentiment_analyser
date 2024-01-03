@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <div class="about-section">
+        <h2 class="text-success">About the analyser</h2>
+        <p class="text-muted"> This analyser gets track information from Spotify using the <a
+                href="https://github.com/spotipy-dev/spotipy">Spotipy</a> library and then gets the lyrics from
+            Genius.com using the <a href="https://github.com/johnwmillr/LyricsGenius">lyricsgenius</a> library. It
+            detects the language of the lyrics using the <a
+                href="https://github.com/facebookresearch/fastText">Fasttext</a> library and
+            subsequently performs sentiment analysis on the lyrics that are in english leveraging the Natural Language
+            Processing library <a href="https://github.com/explosion/spaCy">Spacy</a>.</p>
+        <h3 class="text-success">Natural Language Processing</h3>
+        <p class="text-muted">Features calculated applying NLP to track's lyrics.</p>
+        <h4 class="text-muted" id="sentiment_score">Sentiment score
+            </h3>
+            <p class="text-muted">
+                Compound sentiment of a track's lyrics and ranges from -1 (most negative)
+                to 1 (most positive). A score close to 0 suggests a more neutral
+                sentiment. The sentiment score takes into account the intensity and polarity of individual words to
+                provide
+                a comprehensive sentiment analysis result.
+            </p>
+            <h4 class="text-muted" id="lexical_diversity">Lexical diversity</h3>
+                <p class="text-muted">
+                    A measure from 0.0 to 1.0 describing how many unique words there are in a track's lyrics. It is
+                    calculated
+                    by dividing the number of unique <a
+                        href="https://nlp.stanford.edu/IR-book/html/htmledition/stemming-and-lemmatization-1.html">lemmas</a>
+                    in
+                    a text by the total number of lemmas.
+                </p>
+                <h3 class="text-success" id="audio_features">Audio features</h3>
+                <p class="text-muted">Information about a track's audio provided by the Spotify API.</p>
+                <h4 class="text-muted" id="musical_valence">Musical valence</h3>
+                    <p class="text-muted">
+                        A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks
+                        with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low
+                        valence sound
+                        more negative (e.g. sad, depressed, angry).
+                    </p>
+                    <h4 class="text-muted" id="energy">Energy</h3>
+                        <p class="text-muted">
+                            Energy is a measure from 0.0 to 1.0 and represents a perceptual measure of intensity and
+                            activity.
+                            Typically, energetic tracks feel fast, loud, and noisy. For example, death metal has high
+                            energy, while a
+                            Bach prelude scores low on the scale. Perceptual features contributing to this attribute
+                            include dynamic
+                            range, perceived loudness, timbre, onset rate, and general entropy.
+                        </p>
+                        <h4 class="text-muted" id="danceability">Danceability</h3>
+                            <p class="text-muted">
+                                Danceability describes how suitable a track is for dancing based on a combination of
+                                musical elements
+                                including tempo, rhythm stability, beat strength, and overall regularity. A value of 0.0
+                                is least danceable
+                                and 1.0 is most danceable.
+                            </p>
+                            <h4 class="text-muted" id="acousticness">Acousticness</h3>
+                                <p class="text-muted">
+                                    A confidence measure from 0.0 to 1.0 of whether the track is acoustic. 1.0
+                                    represents high confidence the
+                                    track is acoustic.
+                                </p>
+
+    </div>
+</div>
+
+{% endblock %}
