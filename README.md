@@ -1,10 +1,8 @@
 # Playlist sentiment analyser
 
-### David Ramos from Tampere, Finland
 
 <img src="playlist_sentiment_analyser/static/screenshot.png" height="400">
 
-#### Video Demo: 
 
 ## Description
 
