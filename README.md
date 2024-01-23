@@ -22,7 +22,7 @@ The web app is Python based its dependencies are managed with [Poetry](https://g
 
 The web app can then be run locally by executing the following commands from the parent directory:
 
-    poetry run flask --app playlist_sentiment_analyser init-d
+    poetry run flask --app playlist_sentiment_analyser init-db
 
     poetry run flask run
 
