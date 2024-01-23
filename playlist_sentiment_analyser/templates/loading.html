@@ -7,9 +7,9 @@ Loading
 {% block scripts %}
 <script>
     function navigate() {
-        window.location.href = 'analysis';  // Redirects user to the /analysis route when 'analysis' is finished
+        window.location.href = '{{ url_for("analysis.analysis") }}';  // Redirects user to the /analysis route when 'analysis' is finished
     }
-    fetch('analyse').then(navigate); // Performing 'analyse' and then calls navigate() function, declared above
+    fetch('{{ url_for("analyse.analyse") }}').then(navigate); // Performing 'analyse' and then calls navigate() function, declared above
 </script>
 {% endblock scripts %}
 
