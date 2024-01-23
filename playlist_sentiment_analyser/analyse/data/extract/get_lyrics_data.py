@@ -1,4 +1,3 @@
-from dotenv import load_dotenv
 from lyricsgenius import Genius
 
 import re
@@ -16,8 +15,7 @@ def remove_after_dash(s):
 
 def get_lyrics(genius, tracks_data):
     tracks_lyrics = []
-    # with open("../data/raw/tracks_info.json", "r") as f:
-    #    tracks_info = json.load(f)
+
     for track in tracks_data:
         lyrics = genius.search_song(
             title=remove_after_dash(track["track"]["name"]),
@@ -33,10 +31,6 @@ def get_lyrics(genius, tracks_data):
 
 
 def get_data(tracks_data):
-    load_dotenv(dotenv_path="../.env")
-
     genius = Genius(retries=3)
 
     return get_lyrics(genius, tracks_data)
-    # with open("../data/raw/tracks_lyrics.json", "w") as f:
-    #    json.dump(tracks_lyrics, f, sort_keys=True, indent=4)

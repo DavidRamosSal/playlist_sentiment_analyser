@@ -25,8 +25,8 @@ Sentiment Analysis for: {{ playlist_name }}
         <div class="col-md-3">
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <h5 class="card-title text-secondary">Average Lyrics Sentiment</h5>
-                    <p class="card-text text-success">{{ avg_sentiment }}</p>
+                    <h5 class="card-title text-secondary">Predominant Lyrics Sentiment</h5>
+                    <p class="card-text text-success">{{ predominant_sentiment }}</p>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@ Sentiment Analysis for: {{ playlist_name }}
                 <div class="card-body">
                     <h5 class="card-title text-secondary">Average <a class="link-secondary"
                             href="/about#musical_valence">Musical Valence</a></h5>
-                    <p class="card-text text-success">{{ avg_valence | two_decimal_places}}</p>
+                    <p class="card-text text-success">{{ avg_valence }}</p>
                 </div>
             </div>
         </div>
@@ -67,7 +67,7 @@ Sentiment Analysis for: {{ playlist_name }}
                     <h5 class="card-title text-secondary">Wordcloud</h5>
                     <!-- Placeholder for image -->
                     <div class="text-center">
-                        <img class="img-fluid" src=" {{ url_for('fullwordcloud') }}">
+                        <img class="img-fluid" src=" {{ url_for('analysis.fullwordcloud') }}">
                     </div>
                 </div>
             </div>

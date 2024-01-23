@@ -1,5 +1,5 @@
-from dotenv import load_dotenv
 import spotipy
+from playlist_sentiment_analyser.db import get_db
 
 
 def get_pl_id(pl_url):
@@ -35,8 +35,6 @@ def get_tracks_info(sp, uri):
 
 
 def get_data(playlist_url):
-    load_dotenv(dotenv_path="../.env")
-
     sp = spotipy.Spotify(
         client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials()
     )
@@ -47,6 +45,3 @@ def get_data(playlist_url):
     playlist_name = sp.playlist(pl_uri, fields="name")["name"]
 
     return [playlist_name, get_tracks_info(sp, pl_uri)]
-
-    # with open("../data/raw/tracks_info.json", "w") as f:
-    #    json.dump(tracks_info, f, sort_keys=True, indent=4)

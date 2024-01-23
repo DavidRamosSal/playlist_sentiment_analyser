@@ -5,13 +5,23 @@ Analyse Playlist
 {% endblock %}
 
 {% block main %}
-<form action="/" method="post">
+<form action="{{ url_for('main.index') }}" method="post">
+    {{ form.hidden_tag() }}
     <div class="mb-3">
-        <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="playlist_url"
-            placeholder="https://open.spotify.com/playlist/example" type="url">
+        {{ form.url(class="form-control mx-auto w-auto" + (" is-invalid" if form.url.errors else ''), autofocus=True,
+        autocomplete="off", placeholder="https://open.spotify.com/playlist/example") }}
+        <!-- <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="playlist_url"
+            placeholder="https://open.spotify.com/playlist/example" type="url"> -->
+        {% if form.url.errors %}
+        {% for error in form.url.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+        {%- endfor %}
+        {% endif %}
     </div>
+
     <div class="d-flex justify-content-center mb-3">
-        <button class="btn btn-success" type="submit">Analyse</button>
+        {{ form.submit(class="btn btn-success") }}
+        <!-- <button class="btn btn-success" type="submit">Analyse</button> -->
     </div>
 </form>
 {% endblock %}

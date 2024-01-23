@@ -1,7 +1,7 @@
 import json
-import sqlite3
 import spacy
-import asent
+import asent  # includes sentiment analysis model
+from playlist_sentiment_analyser.db import get_db
 
 
 def add_tokenizer_exceptions(nlp, exceptions):
@@ -66,29 +66,23 @@ def lemmatize(doc, nlp):
 
 
 def sentiment(score):
-    return "Positive" if score >= 0.05 else "Negative" if score <= -0.05 else "Neutral"
+    return "positive" if score >= 0.05 else "negative" if score <= -0.05 else "neutral"
 
 
-def main():
-    with open("./nlp/settings.json", "r") as f:
+def analyse(tracks_ids):
+    with open("./playlist_sentiment_analyser/analyse/nlp/settings.json", "r") as f:
         settings = json.load(f)
 
-    db_path = "./songs.db"
+    db = get_db()
 
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row
-
-    # Get songs ids and lyrics
-    c = conn.cursor()
-    c.execute("""SELECT id, lyrics FROM songs WHERE language = 'en';""")
-    tracks = c.fetchall()
-
-    # Create new columns to save the lemmatization and sentiment info
-    c.execute("""ALTER TABLE songs ADD COLUMN lemmatization TEXT;""")
-
-    c.execute("""ALTER TABLE songs ADD COLUMN sentiment_score REAL;""")
-
-    c.execute("""ALTER TABLE songs ADD COLUMN sentiment TEXT;""")
+    # Get song lyrics
+    cursor = db.execute(
+        "SELECT id, lyrics FROM songs WHERE id IN ({0});".format(
+            ", ".join("?" for _ in tracks_ids)
+        ),
+        tuple(tracks_ids),
+    )
+    tracks = cursor.fetchall()
 
     nlp = natural_language_processing(
         settings["tokenizer_exceptions"],
@@ -102,25 +96,19 @@ def main():
         lemmatization = " ".join(lemmatize(doc, nlp))
         sentiment_score = doc._.polarity.compound
 
-        c.execute(
+        db.execute(
             """UPDATE songs SET lemmatization = ? WHERE id = ?;""",
             (lemmatization, track["id"]),
         )
 
-        c.execute(
+        db.execute(
             """UPDATE songs SET sentiment_score = ? WHERE id = ?;""",
             (sentiment_score, track["id"]),
         )
 
-        c.execute(
+        db.execute(
             """UPDATE songs SET sentiment = ? WHERE id = ?;""",
             (sentiment(sentiment_score), track["id"]),
         )
 
-    c.close()
-    conn.commit()
-    conn.close()
-
-
-if __name__ == "__main__":
-    main()
+    db.commit()
