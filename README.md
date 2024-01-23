@@ -8,7 +8,7 @@
 
 ## Description
 
-This web app generates a a report for a Spotify playlist that includes: lyrics sentiment score, lyrics lexical diversity, audio valence and audio energy, among others.
+This web app generates a report for a Spotify playlist that includes: lyrics sentiment score, lyrics lexical diversity, audio valence and audio energy, among others.
 
 ## Stack
 
