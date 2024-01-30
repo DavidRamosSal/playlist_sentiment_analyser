@@ -10,11 +10,9 @@ Analyse Playlist
     <div class="mb-3">
         {{ form.url(class="form-control mx-auto w-auto" + (" is-invalid" if form.url.errors else ''), autofocus=True,
         autocomplete="off", placeholder="https://open.spotify.com/playlist/example") }}
-        <!-- <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="playlist_url"
-            placeholder="https://open.spotify.com/playlist/example" type="url"> -->
         {% if form.url.errors %}
         {% for error in form.url.errors %}
-        <div class="invalid-feedback">{{ error }}</div>
+        <div class="invalid-feedback text-center">{{ error }}</div>
         {%- endfor %}
         {% endif %}
     </div>
