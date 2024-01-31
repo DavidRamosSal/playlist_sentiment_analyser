@@ -1,6 +1,8 @@
 .env
 .venv/
 
+.db
+
 .cache
 __pycache__/
 *_session/
