@@ -36,7 +36,9 @@ def get_tracks_info(sp, uri):
 
 def get_data(playlist_url):
     sp = spotipy.Spotify(
-        client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials()
+        client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials(),
+        requests_timeout=10,
+        retries=10,
     )
 
     pl_id = get_pl_id(playlist_url)

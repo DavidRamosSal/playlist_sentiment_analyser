@@ -14,7 +14,7 @@ Analyse Playlist
             placeholder="https://open.spotify.com/playlist/example" type="url"> -->
         {% if form.url.errors %}
         {% for error in form.url.errors %}
-        <div class="invalid-feedback">{{ error }}</div>
+        <div class="invalid-feedback text-center">{{ error }}</div>
         {%- endfor %}
         {% endif %}
     </div>

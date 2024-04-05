@@ -20,6 +20,7 @@ def get_lyrics(genius, tracks_data):
         lyrics = genius.search_song(
             title=remove_after_dash(track["track"]["name"]),
             artist=track["track"]["artists"][0]["name"],
+            get_full_info=False,
         )
         if lyrics is None:
             continue
