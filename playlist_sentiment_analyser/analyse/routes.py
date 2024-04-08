@@ -16,7 +16,7 @@ from playlist_sentiment_analyser.analyse.nlp import (
 
 
 @bp.route("/analyse")
-def analyse():
+async def analyse():
     playlist_url = session.get("playlist_url")
 
     playlist_name, tracks_data = get_track_data.get_data(playlist_url)
@@ -35,7 +35,7 @@ def analyse():
     # print(tracks_data[0]["track"]["id"])
     # print("/n")
 
-    lyrics_data = get_lyrics_data.get_data(tracks_data)
+    lyrics_data = await get_lyrics_data.get_data(tracks_data)
 
     lyrics_data = clean_lyrics_data.clean_lyrics(lyrics_data)
 
