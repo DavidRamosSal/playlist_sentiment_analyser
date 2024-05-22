@@ -4,7 +4,7 @@ from playlist_sentiment_analyser.db import get_db
 
 def identify_language(tracks_ids):
     # Load language recognition model
-    lid_model = fasttext.load_model("/home/daveLRS/playlist_sentiment_analyser/playlist_sentiment_analyser/static/lid.176.ftz")
+    lid_model = fasttext.load_model("./playlist_sentiment_analyser/static/lid.176.ftz")
 
     # Load db
     db = get_db()

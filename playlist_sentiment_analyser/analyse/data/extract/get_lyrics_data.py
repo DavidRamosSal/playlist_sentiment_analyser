@@ -48,9 +48,11 @@ async def get_data(tracks_data):
 
     lyrics = await asyncio.gather(*tasks)
 
+    lyrics_list = list(lyrics)
+
     tracks_lyrics = []
 
-    for track, lyrics in zip(tracks_data, lyrics):
+    for track, lyrics in zip(tracks_data, lyrics_list):
         if lyrics is None:
             continue
         track_l = lyrics.to_dict()

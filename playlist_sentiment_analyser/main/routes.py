@@ -1,4 +1,4 @@
-from flask import (
+from quart import (
     flash,
     render_template,
     session,
@@ -17,17 +17,17 @@ def after_request(response):
 
 
 @bp.route("/", methods=["GET", "POST"])
-def index():
+async def index():
     """Form requiring Spotify playist"""
 
     form = SpotifyPlaylistForm()
 
     if form.validate_on_submit():
         session["playlist_url"] = form.url.data
-        flash("Playlist analysis requested")
-        return render_template("loading.html")
+        await flash("Playlist analysis requested")
+        return await render_template("loading.html")
 
-    return render_template("index.html", form=form)
+    return await render_template("index.html", form=form)
 
 
 @bp.route("/about")

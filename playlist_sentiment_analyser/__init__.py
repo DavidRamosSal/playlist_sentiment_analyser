@@ -1,10 +1,12 @@
-from flask import Flask, request, current_app
+import quart_flask_patch
+
+from quart import Quart, request, current_app
 from config import Config
 
 
 def create_app(config_class=Config):
-    """Create and configure an instance of the Flask application."""
-    app = Flask(__name__)
+    """Create and configure an instance of the Quart application."""
+    app = Quart(__name__)
     app.config.from_object(config_class)
 
     # database stuff

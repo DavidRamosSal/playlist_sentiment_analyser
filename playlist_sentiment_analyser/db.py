@@ -1,8 +1,9 @@
 import sqlite3
 
 import click
-from flask import current_app
-from flask import g
+from quart import current_app
+from quart.cli import with_appcontext
+from quart import g
 
 
 def get_db():
@@ -19,7 +20,7 @@ def get_db():
     return g.db
 
 
-def close_db(e=None):
+async def close_db(e=None):
     """If this request connected to the database, close the
     connection.
     """
@@ -33,11 +34,12 @@ def init_db():
     """Clear existing data and create new tables."""
     db = get_db()
 
-    with current_app.open_resource("schema.sql") as f:
-        db.executescript(f.read().decode("utf8"))
+    with open(current_app.root_path + "/schema.sql") as f:
+        db.executescript(f.read())
 
 
 @click.command("init-db")
+@with_appcontext
 def init_db_command():
     """Clear existing data and create new tables."""
     init_db()
@@ -45,7 +47,7 @@ def init_db_command():
 
 
 def init_app(app):
-    """Register database functions with the Flask app. This is called by
+    """Register database functions with the Quart app. This is called by
     the application factory.
     """
     app.teardown_appcontext(close_db)

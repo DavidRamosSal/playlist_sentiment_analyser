@@ -70,7 +70,7 @@ def sentiment(score):
 
 
 def analyse(tracks_ids):
-    with open("/home/daveLRS/playlist_sentiment_analyser/playlist_sentiment_analyser/analyse/nlp/settings.json", "r") as f:
+    with open("./playlist_sentiment_analyser/analyse/nlp/settings.json", "r") as f:
         settings = json.load(f)
 
     db = get_db()

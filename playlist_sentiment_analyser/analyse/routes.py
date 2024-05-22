@@ -1,4 +1,4 @@
-from flask import session
+from quart import session
 from playlist_sentiment_analyser.analyse import bp
 from playlist_sentiment_analyser.analyse.data.extract import (
     get_track_data,

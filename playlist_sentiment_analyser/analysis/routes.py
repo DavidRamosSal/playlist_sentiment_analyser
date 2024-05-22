@@ -1,4 +1,4 @@
-from flask import render_template, session, make_response
+from quart import render_template, session, make_response
 
 from playlist_sentiment_analyser.analysis import bp
 from playlist_sentiment_analyser.db import get_db
@@ -55,14 +55,14 @@ def analysis():
 
 
 @bp.route("/fullwordcloud.png")
-def fullwordcloud():
+async def fullwordcloud():
     db = get_db()
 
     tracks_ids = session["spotify_ids"]
 
     output = create_wordcloud(db, tracks_ids)
 
-    response = make_response(output.getvalue())
+    response = await make_response(output.getvalue())
     response.mimetype = "image/png"
 
     return response
