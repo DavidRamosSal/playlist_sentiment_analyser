@@ -20,6 +20,8 @@ requests = "^2.31.0"
 plotly = "^5.18.0"
 flask-wtf = "^1.2.1"
 agenius = "^4.0.1.post1"
+quart = "^0.19.6"
+quart-flask-patch = "^0.3.0"
 [tool.poetry.dependencies.en_core_web_sm]
 url = "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1.tar.gz"
 
