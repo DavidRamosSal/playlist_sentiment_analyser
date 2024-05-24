@@ -27,16 +27,15 @@ def get_tracks_info(sp, uri):
         except (ValueError, IndexError):
             tracks_info[i]["track"]["genre"] = ""
         tracks_info[i]["track"]["tracks_audio_features"] = sp.audio_features(id)
-        tracks_info[i]["track"]["tracks_audio_analysis"] = sp.audio_analysis(id)[
-            "sections"
-        ]
-
     return tracks_info
 
 
 def get_data(playlist_url):
     sp = spotipy.Spotify(
-        client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials()
+        client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials(),
+        requests_timeout=10,
+        retries=10,
+        status_forcelist=[429],
     )
 
     pl_id = get_pl_id(playlist_url)
