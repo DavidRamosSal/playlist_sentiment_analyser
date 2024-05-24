@@ -35,10 +35,7 @@ def get_data(playlist_url):
         client_credentials_manager=spotipy.oauth2.SpotifyClientCredentials(),
         requests_timeout=10,
         retries=10,
-<<<<<<< HEAD
-=======
         status_forcelist=[429],
->>>>>>> 67749ca (not collect unsused info from spotify API)
     )
 
     pl_id = get_pl_id(playlist_url)
