@@ -77,7 +77,7 @@ def analyse(tracks_ids):
 
     # Get song lyrics
     cursor = db.execute(
-        "SELECT id, lyrics FROM songs WHERE id IN ({0});".format(
+        "SELECT id, lyrics FROM songs WHERE id IN ({0}) AND language = 'en';".format(
             ", ".join("?" for _ in tracks_ids)
         ),
         tuple(tracks_ids),
