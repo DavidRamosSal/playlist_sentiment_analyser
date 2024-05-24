@@ -38,7 +38,7 @@ def natural_language_processing(
     tokenizer_exceptions, lemmatizer_exceptions, custom_stop_words
 ):
     # load model and costumize it
-    nlp = spacy.load("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm", exclude=["tok2vec"])
     nlp.add_pipe("asent_en_v1")
 
     # Uncomment for faster but less accurate parsing
