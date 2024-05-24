@@ -38,7 +38,7 @@ def natural_language_processing(
     tokenizer_exceptions, lemmatizer_exceptions, custom_stop_words
 ):
     # load model and costumize it
-    nlp = spacy.load("en_core_web_sm", exclude=["tok2vec"])
+    nlp = spacy.load("en_core_web_sm")
     nlp.add_pipe("asent_en_v1")
 
     # Uncomment for faster but less accurate parsing
@@ -90,9 +90,8 @@ def analyse(tracks_ids):
         settings["custom_stop_words"],
     )
 
-    all_lyrics = [track["lyrics"] for track in tracks]
-
-    for track, doc in zip(tracks, nlp.pipe(all_lyrics)):
+    for track in tracks:
+        doc = nlp(track["lyrics"])
         lemmatization = " ".join(lemmatize(doc, nlp))
         sentiment_score = doc._.polarity.compound
 
