@@ -46,24 +46,24 @@ def load(tracks):
         #             audio_analysis["time_signature_confidence"],
         #         ),
         #     )
-        # db.execute(
-        #     """INSERT INTO audio_features VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);""",
-        #     (
-        #         track["track"]["id"],
-        #         track["track"]["tracks_audio_features"][0]["acousticness"],
-        #         track["track"]["tracks_audio_features"][0]["danceability"],
-        #         track["track"]["tracks_audio_features"][0]["duration_ms"],
-        #         track["track"]["tracks_audio_features"][0]["energy"],
-        #         track["track"]["tracks_audio_features"][0]["instrumentalness"],
-        #         track["track"]["tracks_audio_features"][0]["key"],
-        #         track["track"]["tracks_audio_features"][0]["liveness"],
-        #         track["track"]["tracks_audio_features"][0]["loudness"],
-        #         track["track"]["tracks_audio_features"][0]["mode"],
-        #         track["track"]["tracks_audio_features"][0]["speechiness"],
-        #         track["track"]["tracks_audio_features"][0]["tempo"],
-        #         track["track"]["tracks_audio_features"][0]["time_signature"],
-        #         track["track"]["tracks_audio_features"][0]["valence"],
-        #     ),
-        # )
+        db.execute(
+            """INSERT INTO audio_features VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);""",
+            (
+                track["track"]["id"],
+                track["track"]["tracks_audio_features"][0]["acousticness"],
+                track["track"]["tracks_audio_features"][0]["danceability"],
+                track["track"]["tracks_audio_features"][0]["duration_ms"],
+                track["track"]["tracks_audio_features"][0]["energy"],
+                track["track"]["tracks_audio_features"][0]["instrumentalness"],
+                track["track"]["tracks_audio_features"][0]["key"],
+                track["track"]["tracks_audio_features"][0]["liveness"],
+                track["track"]["tracks_audio_features"][0]["loudness"],
+                track["track"]["tracks_audio_features"][0]["mode"],
+                track["track"]["tracks_audio_features"][0]["speechiness"],
+                track["track"]["tracks_audio_features"][0]["tempo"],
+                track["track"]["tracks_audio_features"][0]["time_signature"],
+                track["track"]["tracks_audio_features"][0]["valence"],
+            ),
+        )
 
     db.commit()
