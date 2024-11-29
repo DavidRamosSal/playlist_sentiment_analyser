@@ -2,7 +2,8 @@
 
 <img src="./playlist_sentiment_analyser/static/screenshot.png" height="400">
 
-#### Live Demo: https://playlist-sentiment-analyser.onrender.com/
+#### Live Demo: https://playlist-sentiment-analyser.onrender.com/ (Currently down due to [big changes](https://developer.spotify.com/blog/2024-11-27-changes-to-the-web-api) in Spotify's Web API)
+
 #### Video Demo: https://www.youtube.com/watch?v=B5DKbSFF97g
 
 ## Description
@@ -11,9 +12,9 @@ This web app generates a report for a Spotify playlist that includes: lyrics sen
 
 ## Stack
 
-* Database: SQLite
-* Back-end: Python (Flask)
-* Front-end: Javascript, Bootstrap
+- Database: SQLite
+- Back-end: Python (Flask)
+- Front-end: Javascript, Bootstrap
 
 ## Set-up
 
@@ -29,13 +30,13 @@ The web app can then be run locally by executing the following commands from the
 
 ## Working principle
 
-The app can be divided in three big parts: data pipeline (ETL), data analysis and data visualization. 
+The app can be divided in three big parts: data pipeline (ETL), data analysis and data visualization.
 
 ### Data pipeline (Extract, Transform, Load)
 
 The app gets a playlist's track information from Spotify using the [Spotipy](https://github.com/spotipy-dev/spotipy) library, which is a convenient python interface for the official Spotify Web API. This information includes track name, artists, album and audio features.
 
-Lyrics for each track are extracted from Genius.com using the [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) library, which is a Python client for the Genius.com API that additionally scraps a track's lyrics. 
+Lyrics for each track are extracted from Genius.com using the [LyricsGenius](https://github.com/johnwmillr/LyricsGenius) library, which is a Python client for the Genius.com API that additionally scraps a track's lyrics.
 
 The lyrics data is then cleaned and loaded to a SQLite database.
 
